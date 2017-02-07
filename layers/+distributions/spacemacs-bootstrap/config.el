@@ -77,6 +77,7 @@ if used there.")
                                  ("visual" "gray" (hbar . 2))
                                  ("motion" "plum3" box)
                                  ("lisp" "HotPink1" box)
+                                 ("lisp-insert" "HotPink1" (bar . 2))
                                  ("iedit" "firebrick1" box)
                                  ("iedit-insert" "firebrick1" (bar . 2)))
   "Colors assigned to evil states with cursor definitions.

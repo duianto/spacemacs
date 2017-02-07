@@ -72,8 +72,17 @@
 
   (require 'cl)
   ;; State cursors
-  (cl-loop for (state color shape) in spacemacs-evil-cursors
-           do (spacemacs/add-evil-cursor state color shape))
+  (cl-loop for (state color cursor) in spacemacs-evil-cursors
+           do
+           (eval `(defface ,(intern (format "spacemacs-%s-face" state))
+                    `((t (:background ,color
+                                      :foreground ,(face-background 'mode-line)
+                                      :inherit 'mode-line)))
+                    (format "%s state face." state)
+                    :group 'spacemacs))
+           (set (intern (format "evil-%s-state-cursor" state))
+                (list (when dotspacemacs-colorize-cursor-according-to-state color)
+                      cursor)))
   (add-hook 'spacemacs-post-theme-change-hook 'spacemacs/set-state-faces)
 
   ;; evil ex-command

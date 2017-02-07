@@ -171,6 +171,18 @@
       (add-hook 'spacemacs-editing-style-hook
                 #'spacemacs//iedit-insert-state-hybrid))))
 
+(defun spacemacs-evil/init-evil-lisp-state ()
+  (use-package evil-lisp-state
+    :defer t
+    :init
+    (progn
+      (add-hook 'prog-mode-hook 'spacemacs//load-evil-lisp-state)
+      (setq evil-lisp-state-global t))
+    :config
+    (progn
+      (spacemacs/set-leader-keys "k" evil-lisp-state-map)
+      (spacemacs//evil-lisp-more-keys))))
+
 (defun spacemacs-evil/init-evil-indent-plus ()
   (use-package evil-indent-plus
     :defer t
@@ -197,15 +209,6 @@
         "xal" 'evil-lion-left
         "xaL" 'evil-lion-right))
     :config (evil-lion-mode)))
-
-(defun spacemacs-evil/init-evil-lisp-state ()
-  (use-package evil-lisp-state
-    :defer t
-    :init
-    (progn
-      (add-hook 'prog-mode-hook 'spacemacs//load-evil-lisp-state)
-      (setq evil-lisp-state-global t))
-    :config (spacemacs/set-leader-keys "k" evil-lisp-state-map)))
 
 ;; other commenting functions in funcs.el with keybinds in keybindings.el
 (defun spacemacs-evil/init-evil-nerd-commenter ()

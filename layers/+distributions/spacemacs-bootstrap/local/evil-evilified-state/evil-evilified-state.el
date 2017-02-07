@@ -53,6 +53,14 @@
   "Local backup of normal state keymap.")
 (make-variable-buffer-local 'evilified-state--normal-state-map)
 
+(evil-define-state lisp-insert
+  "Replace insert state in `lisp state'."
+  :tag " <El> "
+  :enable (insert)
+  :cursor (bar . 2)
+  :message "-- LISP-INSERT --"
+  :input-method t)
+
 (evil-define-state evilified
   "Evilified state.
  Hybrid `emacs state' with carefully selected Vim key bindings.
