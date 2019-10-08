@@ -948,6 +948,10 @@ Other:
     - Switch to Project Perspective and Show Recent Files
     - Switch to Project Perspective and Search
     (thanks to Gia Thanh Vuong)
+  - Added keys to the symbol highlight transient state ~SPC s h~, ~*~ or ~#~:
+    - ~j~ =spacemacs/quick-ahs-forward=
+    - ~k~ =spacemacs/quick-ahs-backward=
+    (thanks to duianto)
 - Fixed:
   - Fixed ~h~ key binding in compilation and grep buffers
     (thanks to Sylvain Benner)

@@ -69,7 +69,7 @@
             ahs-inhibit-face-list nil
             spacemacs--symbol-highlight-transient-state-doc "
  %s
- [_n_] next   [_N_/_p_] prev  [_d_/_D_] next/prev def  [_r_] range  [_R_] reset  [_z_] recenter
+ [_n_/_j_] next  [_N_/_p_/_k_] prev  [_d_/_D_] next/prev def  [_r_] range  [_R_] reset  [_z_] recenter
  [_e_] iedit")
 
       ;; since we are creating our own maps,
@@ -132,7 +132,9 @@
         ("d" ahs-forward-definition)
         ("D" ahs-backward-definition)
         ("e" spacemacs/ahs-to-iedit :exit t)
+        ("j" spacemacs/quick-ahs-forward)
         ("n" spacemacs/quick-ahs-forward)
+        ("k" spacemacs/quick-ahs-backward)
         ("N" spacemacs/quick-ahs-backward)
         ("p" spacemacs/quick-ahs-backward)
         ("R" ahs-back-to-start)

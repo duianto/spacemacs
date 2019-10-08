@@ -40,7 +40,7 @@
     (setq spacemacs--symbol-highlight-transient-state-doc
           (concat
            spacemacs--symbol-highlight-transient-state-doc
-           "  Search: [_s_] swiper  [_b_] buffers  [_f_] files  [_/_] project"))
+           "   Search: [_s_] swiper  [_b_] buffers  [_f_] files  [_/_] project"))
     (spacemacs/transient-state-register-add-bindings 'symbol-highlight
       '(("s" spacemacs/swiper-region-or-symbol :exit t)
         ("b" spacemacs/swiper-all-region-or-symbol :exit t)
