@@ -16,7 +16,6 @@
         ac-ispell
         company
         (company-box :toggle auto-completion-use-company-box)
-        (all-the-icons :toggle auto-completion-use-company-box)
         (company-quickhelp :toggle auto-completion-enable-help-tooltip)
         company-statistics
         counsel
@@ -151,14 +150,16 @@
        (unless (eq auto-completion-enable-help-tooltip 'manual)
          (company-quickhelp-mode))))))
 
-(defun auto-completion/init-all-the-icons ()
-  (use-package all-the-icons
-    :after company
-    :config
+(defun auto-completion/init-company-box ()
+  (use-package company-box
+    :hook '(company-mode . company-box-mode)
+    :commands 'company-box-doc-manually
+    :init
     (progn
+      ;; Icons selected by liguangsheng
+      ;; https://github.com/liguangsheng/emacsd/blob/master/lisp/init-completion.el
+      (require 'all-the-icons)
       (eval-and-compile
-        ;; Icons selected by liguangsheng
-        ;; https://github.com/liguangsheng/emacsd/blob/master/lisp/init-completion.el
         (defun my-company-box-icon (family icon &rest args)
           "Defines icons using `all-the-icons' for `company-box'."
           (when icon
@@ -197,13 +198,8 @@
               (Event . ,(my-company-box-icon 'faicon "bolt"))
               (Operator . ,(my-company-box-icon 'faicon "tag"))
               (TypeParameter . ,(my-company-box-icon 'faicon "cog"))
-              (Template . ,(my-company-box-icon 'octicon "file-code")))))))
-
-(defun auto-completion/init-company-box ()
-  (use-package company-box
-    :hook '(company-mode . company-box-mode)
-    :commands 'company-box-doc-manually
-    :init (setq company-box-icons-alist 'company-box-icons-all-the-icons)
+              (Template . ,(my-company-box-icon 'octicon "file-code"))))
+      (setq company-box-icons-alist 'company-box-icons-all-the-icons))
     :config
     (progn
       (spacemacs|hide-lighter company-box-mode)
