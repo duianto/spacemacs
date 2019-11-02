@@ -406,6 +406,12 @@
   :mode font-lock-mode
   :documentation "Toggle syntax highlighting."
   :evil-leader "ths")
+(spacemacs|add-toggle tabs
+  :mode centaur-tabs-mode
+  :on (centaur-tabs-mode t)
+  :off (centaur-tabs-mode -1)
+  :documentation "Toggle Tabs."
+  :evil-leader "tt")
 (spacemacs|add-toggle zero-based-column-indexing
   :documentation "Toggle column indexing starting at 0 versus 1.
 
@@ -638,6 +644,61 @@ respond to this toggle."
 (spacemacs/set-leader-keys "b." 'spacemacs/buffer-transient-state/body)
 
 ;; end of Buffer transient state
+
+;; Tabs Transient State
+
+(defvar spacemacs--tabs-ts-full-hint-toggle nil
+  "Display tabs transient-state documentation.")
+
+(defun spacemacs//tabs-ts-toggle-hint ()
+  "Toggle the full hint docstring for the tabs transient-state."
+  (interactive)
+  (setq spacemacs--tabs-ts-full-hint-toggle
+        (not spacemacs--tabs-ts-full-hint-toggle)))
+
+(defun spacemacs//tabs-ts-hint ()
+  "Return a condensed/full hint for the tabs transient state"
+  (concat
+   " "
+   (if spacemacs--tabs-ts-full-hint-toggle
+       spacemacs--tabs-ts-full-hint
+     (concat spacemacs--tabs-ts-minified-hint
+             "  ([" (propertize "?" 'face 'hydra-face-red) "] help)"))))
+
+(spacemacs|transient-state-format-hint tabs
+  spacemacs--tabs-ts-minified-hint "
+Tabs: _j_ _k_ Groups: _h_ _l_ _g_")
+
+(spacemacs|transient-state-format-hint tabs
+  spacemacs--tabs-ts-full-hint
+  (format "\n [_?_] toggle help
+Tabs^^          Groups^^        Other
+────^^────────  ──────^^──────  ─────^^───
+[_j_] backward  [_h_] backward  [_q_] quit
+[_k_] forward   [_l_] forward
+^^              [_g_] select"))
+
+(spacemacs|define-transient-state tabs
+  :title "Tabs Transient State"
+  :hint-is-doc t
+  :dynamic-hint (spacemacs//tabs-ts-hint)
+  :bindings
+  ("?" spacemacs//tabs-ts-toggle-hint)
+  ("j" centaur-tabs-backward)
+  ("k" centaur-tabs-forward)
+  ("h" centaur-tabs-backward-group)
+  ("l" centaur-tabs-forward-group)
+  ("g" centaur-tabs-counsel-switch-group)
+  ("q" nil :exit t))
+
+(defun spacemacs/tabs-transient-state ()
+  (interactive)
+  (unless centaur-tabs-mode (centaur-tabs-mode t))
+  (spacemacs/tabs-transient-state/body))
+
+(spacemacs/set-leader-keys "t." 'spacemacs/tabs-transient-state)
+
+;; end of Tabs Transient State
 
 ;; Window Manipulation Transient State
 

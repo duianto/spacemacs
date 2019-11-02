@@ -646,6 +646,7 @@ Other:
   - Remove package =adaptive-wrap=
   - Added =symbol-overlay= to the =spacemacs-navigation= layer
     (thanks to kenkangxgwe)
+  - Added =centaur-tabs= to =spacemacs-navigation= layer (thanks to duianto)
 - Key bindings:
   - New evil text objects =«=, =｢=, =‘= and =“=.
   - Improved buffer transient state with extra bindings and new commands:
@@ -843,6 +844,15 @@ Other:
     - ~SPC l w S~ =spacemacs/single-win-workspace=
   - Added ~SPC t C-S-l~ =spacemacs/toggle-visual-line-navigation-globally=
     (thanks to Matt Kramer)
+  - Added tabs key bindings (thanks duianto):
+    - ~SPC t t~ Toggle Tabs
+    - ~SPC t .~ Tabs Transient State
+      - ~j~ Backward tab
+      - ~k~ Forward tab
+      - ~h~ Backward group
+      - ~l~ Forward group
+      - ~g~ Select group
+      - ~q~ Quit Transient State
 - Improvements:
   - Rewrote window layout functions for ~SPC w 1~, ~SPC w 2~, ~SPC w 3~, and
     ~SPC w 4~ (thanks to Codruț Constantin Gușoi):

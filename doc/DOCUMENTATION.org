@@ -141,6 +141,8 @@
       - [[#frame-manipulation-key-bindings][Frame manipulation key bindings]]
       - [[#emacs-and-spacemacs-files][Emacs and Spacemacs files]]
       - [[#browsing-files-in-completion-buffer][Browsing files in completion buffer]]
+    - [[#tabs][Tabs]]
+      - [[#tabs-transient-state][Tabs Transient State]]
     - [[#ido][Ido]]
     - [[#ido-transient-state][Ido transient state]]
     - [[#bookmarks][Bookmarks]]
@@ -2550,6 +2552,22 @@ In =vim= style and =hybrid= style with the variable
 | ~C-j~       | go to previous candidate          |
 | ~C-k~       | go to next candidate              |
 | ~C-l~       | enter current directory           |
+
+*** Tabs
+Tabs visibility can be toggled on and off with: ~SPC t t~
+
+**** Tabs Transient State
+Opening the Tabs Transient State shows the tabs if they are hidden.
+
+| Key binding | Description                   |
+|-------------+-------------------------------|
+| ~SPC t .~   | Open the Tabs Transient State |
+| ~j~         | Backward tab                  |
+| ~k~         | Forward tab                   |
+| ~h~         | Backward group                |
+| ~l~         | Forward group                 |
+| ~g~         | Select group                  |
+| ~q~         | Quit the Tabs Transient State |
 
 *** Ido
 Spacemacs displays the =ido= minibuffer vertically thanks to the

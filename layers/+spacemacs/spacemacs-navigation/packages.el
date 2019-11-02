@@ -13,6 +13,7 @@
       '(ace-link
         ace-window
         auto-highlight-symbol
+        centaur-tabs
         centered-cursor-mode
         (compile :location built-in)
         (doc-view :location built-in)
@@ -140,6 +141,10 @@
         ("z" (progn (recenter-top-bottom)
                     (spacemacs/symbol-highlight)))
         ("q" nil :exit t)))))
+
+(defun spacemacs-navigation/init-centaur-tabs ()
+  (use-package centaur-tabs-mode
+    :defer t))
 
 (defun spacemacs-navigation/init-centered-cursor-mode ()
   (use-package centered-cursor-mode
