@@ -203,7 +203,7 @@ In the files header, change the default author name (=Sylvain Benner=) to your
 name.
 
 **** README.org tags
-Every README.org file of a layer should contain =#+TAGS:= line:
+A layers README.org file should have a =#+TAGS:= line:
 
 #+BEGIN_EXAMPLE
   #+TITLE: My layer
@@ -214,9 +214,11 @@ Every README.org file of a layer should contain =#+TAGS:= line:
   ...
 #+END_EXAMPLE
 
-Individual tags are separated with "|" char.
-Example above contains 2 tags: "layer" and "web service"
-Tags are listed in [[https://github.com/syl20bnr/spacemacs/blob/develop/.ci/spacedoc-cfg.edn][=<spacemacs_root>/.ci/spacedoc-cfg.edn=]]
+Individual tags are separated by a "|" (pipe, vertical bar) character.
+
+The example above has 2 tags: "layer" and "web service"
+
+The valid tags are listed in: [[https://github.com/syl20bnr/spacemacs/blob/develop/.ci/spacedoc-cfg.edn][<spacemacs_root>/.ci/spacedoc-cfg.edn]]
 
 #+BEGIN_SRC clojure
   :spacetools.spacedoc.config/valid-tags
@@ -227,16 +229,23 @@ Tags are listed in [[https://github.com/syl20bnr/spacemacs/blob/develop/.ci/spac
    "completion" "Completion"}
 #+END_SRC
 
-Labels are used to name headlines in =LAYERS.org= file and
-=:spacetools.spacedoc.config/layers-org-query= defines its structure by
-chaining tags into a tree where every leaf turns into a list of
-descriptions pulled out of README.org files that match leaf's path in the tree.
-You can see how the shape of [[https://github.com/syl20bnr/spacemacs/blob/develop/.ci/spacedoc-cfg.edn][=<spacemacs_root>/.ci/spacedoc-cfg.edn=]]
-repeats in [[https://github.com/syl20bnr/spacemacs/blob/develop/layers/LAYERS.org#table-of-contents][TOC of LAYERS.org]].
-There is one really useful property - every layer description
-will be displayed only once. It is used for "catch all" sections to
-match layers which do not have precise grouping.
-For example DSL language layers:
+Labels are used to name the headlines in [[https://github.com/syl20bnr/spacemacs/blob/develop/layers/LAYERS.org][LAYERS.org]].
+
+The tags structure is defined in =:spacetools.spacedoc.config/layers-org-query=
+by chaining the tags into a tree. Every leaf in the tree turns into a list of
+descriptions that are pulled from the =README.org= files that match a leaf's
+path in the tree.
+
+This makes sure that every layer description only appears once.
+
+You can see how the shape of [[https://github.com/syl20bnr/spacemacs/blob/develop/.ci/spacedoc-cfg.edn][<spacemacs_root>/.ci/spacedoc-cfg.edn]] repeats in
+[[https://github.com/syl20bnr/spacemacs/blob/develop/layers/LAYERS.org#table-of-contents][LAYERS.org]]'s table of contents.
+
+?
+It is used for "catch all" sections to match layers which do not have a precise
+grouping.
+
+For example in the =DSL= language layer:
 
 #+BEGIN_SRC clojure
   {"programming" [{"dsl" ["lisp"
@@ -246,9 +255,9 @@ For example DSL language layers:
                   "dsl"]}
 #+END_SRC
 
-Here every layer that has tags: "layer", "programming", "dsl" plus one of
-"lisp", "markup", "script" tags will be displayed first then the rest of
-layers that have "layer", "programming", "dsl" tags.
+Here every layer that has the tags: "layer", "programming", "dsl", plus one of:
+"lisp", "markup" or "script", will be displayed before the rest of the layers
+that only have the tags: "layer", "programming", "dsl".
 
 *** Contributor to an existing layer
 If you are contributing to an already existing layer, you should not modify any
